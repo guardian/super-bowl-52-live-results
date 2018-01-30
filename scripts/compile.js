@@ -42,6 +42,8 @@ if (specs.isNewVersion) {
 
 fs.emptyDirSync(path);
 
+fs.copySync('src/assets/', '.build/assets');
+
 assets.html(path, assetPath, version);
 
 if (specs.deploy) {
