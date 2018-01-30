@@ -138,7 +138,7 @@ body {
     border-left: 1px solid $c-off-yellow;
     padding-left: 5px;
     box-sizing: border-box;
-    margin-left: 2px;
+    margin-left: 1px;
 }
 
 .sb-caption {
@@ -155,7 +155,4 @@ body {
 
 .sb-image {
     flex-grow: 2;
-    background-color: $c-off-yellow;
-    height: 0;
-    padding-top: 60%;
 }
