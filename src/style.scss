@@ -1,3 +1,10 @@
+@import '../node_modules/sass-mq/mq';
+
+// Breakpoints
+$mq-breakpoints: (
+    tablet: 640px
+);
+
 // Colours
 $c-yellow: #ffe601;
 $c-off-yellow: darken($c-yellow, 10%);
@@ -48,13 +55,20 @@ body {
 .sb-wrapper {
     max-width: 620px;
     display: flex;
+
+    @include mq($until: tablet) {
+        flex-direction: column;
+    }
 }
 
 .sb-content {
     position: relative;
     background-color: $c-yellow;
-    width: 180px;
     flex: 0 0 auto;
+
+    @include mq(tablet) {
+        width: 180px;
+    }
 }
 
 .sb-status {
