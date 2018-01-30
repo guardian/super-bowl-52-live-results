@@ -66,11 +66,38 @@ body {
     display: flex;
 }
 
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
 .sb-status__live {
     background-color: $c-blue;
     padding: 5px;
     width: 50%;
     flex-grow: 0;
+    display: none;
+    text-indent: 1em;
+
+    &.is-live {
+        display: block;
+    }
+
+    &:before {
+        content: '';
+        position: absolute;
+        height: .8em;
+        width: .8em;
+        margin-top: .1em;
+        left: 5px;
+        border-radius: .5em;
+        background-color: $c-white;
+        animation: pulse 1.5s linear infinite;
+    }
 }
 
 .sb-status__status {

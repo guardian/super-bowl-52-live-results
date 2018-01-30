@@ -51,6 +51,7 @@ function populateEmbed() {
     populateElement('sb-score--2', data.eagles);
     populateElement('sb-caption', data.caption);
     populateImage(data.grid);
+    populateLive(data.status);
 }
 
 function populateElement(el, string) {
@@ -59,6 +60,14 @@ function populateElement(el, string) {
 
 function populateImage(url) {
     document.getElementsByClassName('sb-image')[0].setAttribute('src', url);
+}
+
+function populateLive(status) {
+    if (status === 'Final') {
+        document.getElementsByClassName('sb-status__live')[0].classList.remove('is-live');
+    } else {
+        document.getElementsByClassName('sb-status__live')[0].classList.add('is-live');
+    }
 }
 
 init();
