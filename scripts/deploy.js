@@ -1,15 +1,15 @@
-module.exports = function deploy() {
+module.exports = function deploy(version) {
     var thingsToUpload = [
         {
             files: '**/*',
             headers: {
-                CacheControl: 'max-age=20'
+                CacheControl: 'max-age=604800'
             }
         },
         {
             files: '*',
             headers: {
-                CacheControl: 'max-age=20'
+                CacheControl: 'max-age=604800'
             }
         }
     ];
@@ -76,7 +76,8 @@ module.exports = function deploy() {
 
             if ( !inFlight ) {
                 loader.stop();
-                console.log( '\nupload complete! type ' + chalk.cyan( 'npm run open' ) + ' to view the project' );
+                console.log( '\nupload complete');
+                console.log('\nVisit https://interactive.guim.co.uk/' + config.remote.path + '/' + version + '/');
             }
 
             return;
@@ -89,9 +90,9 @@ module.exports = function deploy() {
         var options = {
             Bucket: BUCKET,
             ACL: 'public-read',
-            Key: item.file,
+            Key: config.remote.path + '/' + version + '/' + item.file,
             Body: data,
-            ContentType: mime.lookup( item.file )
+            ContentType: mime.getType( item.file )
         };
 
         Object.keys( item.headers ).forEach( function ( header ) {

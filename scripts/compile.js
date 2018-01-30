@@ -14,7 +14,6 @@ var specs =  {
 
 var path = '.build/';
 var version = config.version;
-var assetPath = specs.deploy === false ? 'http://localhost:' + config.local.port : config.remote.url;
 
 var questionAnswered = false;
 
@@ -37,6 +36,8 @@ if (specs.isNewVersion) {
         }
     })
 
+    config = newConfig;
+
     deasync.loopWhile(function(){return !questionAnswered;});
 }
 
@@ -44,11 +45,13 @@ fs.emptyDirSync(path);
 
 fs.copySync('src/assets/', '.build/assets');
 
+var assetPath = specs.deploy === false ? 'http://localhost:' + config.local.port : config.remote.url + '/' + config.remote.path + '/' + version;
+
 assets.html(path, assetPath, version);
 
 if (specs.deploy) {
     fs.emptyDirSync('.deploy');
     fs.copySync(path, '.deploy');
 
-    deploy();
+    deploy(config.version);
 }

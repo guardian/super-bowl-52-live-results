@@ -19,8 +19,6 @@ module.exports = {
         var html = fs.readFileSync('src/index.html', 'utf8');
         var template = handlebars.compile(html);
 
-        console.log(this.js());
-
         fs.writeFileSync(path + '/index.html', template({
             style: this.css(absolutePath),
             javascript: this.js()
