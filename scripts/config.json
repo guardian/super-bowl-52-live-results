@@ -1,0 +1,12 @@
+{
+    "local": {
+        "url": "http://localhost",
+        "port": 8080
+    },
+    "remote": {
+        "url": "https://interactive.guim.co.uk",
+        "path": "embed/2018/01/super-bowl-live",
+        "bucket": "gdn-cdn"
+    },
+    "version": 1
+}
