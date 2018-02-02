@@ -183,17 +183,23 @@ body {
 }
 
 .sb-caption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
     font-family: 'Guardian Text Sans Web';
     font-size: 14px;
     line-height: 1.1;
     color: lighten($c-black, 40%);
-    padding: 2px 5px 4px;
+    padding: 12px 5px 4px;
+
+    @include mq(tablet) {
+        padding-top: 2px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
 }
 
 .sb-image {
     flex-grow: 2;
+    width: 100%;
+    height: auto;
 }
